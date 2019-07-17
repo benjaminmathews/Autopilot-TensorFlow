@@ -1,0 +1,13 @@
+
+# Compiled files
+*.py[cod]
+
+# Local dataset
+driving_dataset/
+
+# Local Cache
+__pycache__/
+
+#Zip files
+*.gz
+*.tar

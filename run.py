@@ -16,9 +16,14 @@ smoothed_angle = 0
 cap = cv2.VideoCapture(0)
 while(cv2.waitKey(10) != ord('q')):
     ret, frame = cap.read()
-    image = scipy.misc.imresize(frame, [66, 200]) / 255.0
+    # image = scipy.misc.imresize(frame, [66, 200]) / 255.0
+    # cv2.imshow("Show1", frame)
+    # cv2.waitKey(0)
+    image = cv2.resize(frame, (200, 66)) / 255.0
+    # cv2.imshow("Show2", image)
+    # cv2.waitKey(0)
     degrees = model.y.eval(feed_dict={model.x: [image], model.keep_prob: 1.0})[0][0] * 180 / scipy.pi
-    call("clear")
+    # call("clear")
     print("Predicted steering angle: " + str(degrees) + " degrees")
     cv2.imshow('frame', frame)
     #make smooth angle transitions by turning the steering wheel based on the difference of the current angle
